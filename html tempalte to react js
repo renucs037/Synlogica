@@ -1,0 +1,27 @@
+HTML TEMPLATE TO REACT JS
+==================================
+
+1) Copy all folders from your HTML Folder to React Project / public /
+
+2) Create Components/ Folder inside src/ of React Project.
+
+3) Create Component files - Header.js, Footer.js, Home.js, etc (Functional Component)
+
+4) Open index.html code in a editor.
+
+5) Copy CSS and JS links codes from index.html and paste inside public/index.html of your react project inside <head> and bottom respectively.
+
+6) Copy Header Code from index.html and paste in Header.js
+
+7) Copy Footer Code from index.html and paste in Footer.js
+
+8) Copy middle code and paste in Home.js
+
+9) Replace "class" with "className" in all above components and make sure all tags must be closed </tag> or self closed <tag />. 
+For Ex : <br> must be replaced with <br />
+
+10) Open App.js and write below code inside return():
+<Header />
+<Home />
+<Footer />
+
