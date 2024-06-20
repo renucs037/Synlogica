@@ -1,0 +1,50 @@
+//import React from 'react'
+import React ,{useState,useEffect} from 'react'
+
+export default function Photos() {
+  
+  const[data,SetData]=useState([]);
+  useEffect(() => {
+    
+    fetch("https://api.escuelajs.co/api/v1/products").then((r)=>{
+      r.json().then((response)=>{
+        SetData(response)
+
+      })
+    })
+  });
+      
+    
+  
+  
+     return (
+      
+        <div>
+          <h2>Latest products</h2>
+    
+          
+    <table   border='2' cellPadding={'10px'} style={{backgroundColor:'#F4EC9B',color:'black' ,width:'50%'}} >
+      
+          <tr>
+            <th>title</th>
+            <th>id</th>
+            <th>price</th>
+           
+          </tr>
+          {
+            data.map((i)=>
+            <tr>
+              <td>{i.title}</td>
+              <td>{i.id}</td>
+              <td>
+                <img src={ i.images} width={'80px'} />
+              </td>
+            
+            </tr>)
+          }
+        </table>
+   
+    </div>
+  
+  )
+}
