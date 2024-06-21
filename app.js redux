@@ -1,3 +1,47 @@
+reducers/updown.js :
+
+const initialState = 0;
+const change = (state=initialState, action)=>{
+    switch(action.type)
+    {
+        case "INC": return state+1;
+        default : return state;
+    }
+}
+export default change;
+reducers/index.js :
+
+import change from "./updown";
+import { combineReducers } from "redux";
+
+const rootReducer = combineReducers({
+    change
+});
+
+export default rootReducer;
+src/index.js :
+
+import { Provider } from 'react-redux';
+import store from './store';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  
+     <Provider store={store}>
+            <App />
+      </Provider>
+
+);
+store.js :
+
+import {legacy_createStore as createStore} from 'redux'
+import rootReducer from './reducers';
+
+const store = createStore(rootReducer);
+
+export default store;
+App.js :
+
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {incNum} from './actions';
@@ -13,5 +57,22 @@ export default function App() {
       <input type='text' name='quantity' className="form-control" value={mystate} />
       <a className="btn btn-primary" onClick={()=>dispatch(incNum())}>Increment</a>
     </>
+  )
+}
+Lazy Loading and Code Splitting in React
+
+App.js :-
+
+import React, { Suspense, lazy } from 'react'
+
+const Course = lazy(()=>import('./Course'));
+
+export default function App() {
+  return (
+    <div>
+      <Suspense fallback={<div>please wait...</div>}>
+        <Course />
+      </Suspense>
+    </div>
   )
 }
